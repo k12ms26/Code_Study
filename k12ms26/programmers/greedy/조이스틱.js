@@ -1,3 +1,5 @@
+//programmers: 조이스틱
+//미완성
 function solution(name) {
     const arr = name.split('');
     let answer = Math.abs(arr[0].charCodeAt(0) - 'A'.charCodeAt(0));
