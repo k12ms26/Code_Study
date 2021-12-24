@@ -20,9 +20,6 @@ function solution(begin, target, words) {
             
             if(cnt === now.length - 1 && checked[i] === 0) {
                 let last = target.split('');
-                if(arr.filter((e, idx) => e === last[idx]).length === target.length-1) {
-                    return count[nowIndex] + 2;
-                }
                 checked[i] = 1;
                 count[i] = count[nowIndex] + 1;
                 queue.push([words[i], i]);
