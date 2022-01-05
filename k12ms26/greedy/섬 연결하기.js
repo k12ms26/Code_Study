@@ -6,7 +6,7 @@ function solution(n, costs) {
     //비용이 작도록 정렬
     costs.sort((a,b)=>a[2]-b[2]);
     let checked = Array.from({length: n}, ()=>0);
-    let island = Array.from({lengt: costs.length}, ()=>0);
+    let island = Array.from({length: costs.length}, ()=>0);
     checked[costs[0][0]] = 1; checked[costs[0][1]] = 1;
     answer += costs[0][2];
     
