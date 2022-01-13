@@ -1,5 +1,6 @@
 //programmers: 징검다리
 //https://gwang920.github.io/algorithm/progreammers-2-43236/
+//바위 개수와 제거할 바위의 개수가 같은 경우는 안 고려하는건가?
 function solution(distance, rocks, n) {
     let answer = 0;
     rocks=[0, ...rocks.sort((a, b)=>a-b), distance];
@@ -10,6 +11,7 @@ function solution(distance, rocks, n) {
         while(start <= end){
             let mid = Math.floor((start+end)/2);
             let count=0, now=0;
+            //제거할 바위를 고르는 법
             for(let i=1;i<rocks.length;i++){ //이거 왜해?
                 if(rocks[i]-now < mid){ //기준값보다 현재 값이 작으면 count + 1
                     count++;   
