@@ -8,9 +8,11 @@ function solution(n, edge) {
     distance[0] = distance[1] = 0;
     visited[1] = 1;
     
+    //bfs
     while (queue.length) {
         let now = queue.shift();
         for(let i=0;i<edge.length;i++) {
+            //양방향
             if(edge[i][0] === now && visited[edge[i][1]] === 0) {
                 queue.push(edge[i][1]);
                 visited[edge[i][1]] = true;
