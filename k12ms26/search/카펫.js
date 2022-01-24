@@ -15,7 +15,5 @@ function solution(brown, yellow) {
         if(isDone) break;
     }
     
-    if(brown - 4 === (row + col) * 2) return [row+2, col+2];
-    
     return [row+2, col+2];
 }
