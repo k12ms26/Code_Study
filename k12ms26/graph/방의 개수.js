@@ -37,8 +37,6 @@ function solution(arrows) {
                 ((loc[0] === prev[1][0] + 1) || (loc[0] === prev[1][0] - 1) || (loc[0] === prev[1][0])) &&
             ((loc[1] === prev[1][1] + 1) || (loc[1] === prev[1][1] - 1) || (loc[1] === prev[1][1])); //현재 좌표가 이전 방향 맨 처음 점 근처에 있는지
             
-            
-            console.log(prev, [dir, loc], isNearBy)
             prev = [dir, loc];
         }
     }
