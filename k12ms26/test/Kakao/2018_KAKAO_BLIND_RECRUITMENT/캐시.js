@@ -1,7 +1,7 @@
 //programmers: 캐시
 //LRU 알고리즘: 가장 오래된 것 교체
 function solution(cacheSize, cities) {
-    let cache = [], idx = 0;
+    let cache = [];
     let total = 0;
     
     if(cacheSize === 0) return 5 * cities.length;
