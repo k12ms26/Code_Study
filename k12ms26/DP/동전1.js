@@ -1,38 +1,30 @@
-//BOJ: 동전1 (미완성 / Maximum call stack size exceeded)
-//node js 로 풀어서 맞춘 사람이 없다?
-const solution = ([nk, ...arr]) => {
-    let k = nk.split(' ')[1], cases = new Set(); //set으로 초기화
-    const addCases = (cur, curArray) => {
-        curArray.push(cur);
+//BOJ 2293 동전1
+//뭔짓을 해도 메모리 초과
+const solution = (input) => {
+    const [n, k] = input.shift().split(' ');
+    const arr = input.map((v) => Number(v));
+    const dp = new Array(k + 1).fill(0);
 
-        for(let i=0;i<arr.length;i++) {
-            let sum = cur + arr[i];
-            if(sum === k && !cases.has([...curArray, arr[i]])) { //만약 현재 것이 k와 같고 cases에도 없다면
-                cases.add([...curArray, arr[i]]); //추가하고 이 경우는 끝 (break)
-                break;
-            }
-            addCases(cur + arr[i], [...curArray, arr[i]]);
-        }
-    }
-    
+    dp[0] = 1;
     for(let i=0;i<arr.length;i++) {
-        if(arr[i] === k) {
-            cases.add([arr[i]]);
-            continue;
-        }
-        addCases(arr[i], []);
+        for(let j=arr[i];j<=k;j++) {
+            dp[j] = dp[j] + dp[j - arr[i]];
+         }
     }
-
-    console.log(cases.size);
+    console.log(dp[k])
 }
 
+const readline = require("readline");
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
 const input = [];
-require("readline")
-  .createInterface(process.stdin, process.stdout)
-  .on("line", (line) => {
-    input.push(line);
-  })
-  .on("close", () => {
+rl.on("line", (line) => {
+    input.push(line.trim());
+}).on("close", () => {
     solution(input);
+    rl.close();
     process.exit();
-  });
+});
