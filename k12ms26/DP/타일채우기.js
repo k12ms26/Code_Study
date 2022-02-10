@@ -21,7 +21,8 @@ require("readline")
 .createInterface(process.stdin, process.stdout)
 .on("line", (line) => {
     input.push(line);
-}).on("close", () => {
-    solution(input);
+})
+.on("close", async () => {
+    console.log(solution(input[0]));
     process.exit();
 });
