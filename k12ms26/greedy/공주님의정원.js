@@ -10,12 +10,13 @@ const solution = (input) => {
     flowers.sort((a, b) => a[0]-b[0] || a[1]-b[1] || a[2]-b[2] || a[3]-b[3]);
 
     let end = [3, 1], answer = 0;
+    console.log(flowers)
     Loop: for(let month=3;month<=11;month++) {
         for(let day=1;day<=31;day++) {
             const now = flowers.filter((e) => ((+e[0] < +end[0]) || (+e[0] === +end[0] && +e[1] <= +end[1]))
                 && ((+e[2] > +end[0]) || (+e[2] === +end[0] && +e[3] >= +end[1])));
             if(now.length) {
-                const maximum = now[now.length-1]; //맨 마지막 원소
+                const maximum = now[now.length-1]; //맨 마지막 원소가 제일 최선이 아닐수 있음
                 end = [maximum[2], maximum[3]];
                 answer++;
                 for(let i=0;i<now.length;i++) {
