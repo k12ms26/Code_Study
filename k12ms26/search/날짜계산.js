@@ -1,4 +1,5 @@
 //BOJ 1476 날짜 계산
+//메모리 초과
 const input = [];
 require("readline")
   .createInterface(process.stdin, process.stdout)
