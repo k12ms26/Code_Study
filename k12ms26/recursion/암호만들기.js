@@ -1,4 +1,4 @@
-//BOJ 1759 연구소
+//BOJ 1759 암호만들기
 const input = [];
 require("readline")
 .createInterface(process.stdin, process.stdout)
