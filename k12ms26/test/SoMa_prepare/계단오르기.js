@@ -1,5 +1,4 @@
 //BOJ 2579 계단 오르기
-//미완성
 // let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 const input = [];
 require("readline")
@@ -16,24 +15,16 @@ const solution = () => {
     const stairCnt = parseInt(input[0]);
     let dp = [];
     for(let i=1;i<=stairCnt;i++) dp.push(+input[i]);
-    if(dp.length === 1) return dp[0];
-    else if(dp.length === 2) return dp[0] + dp[1];
-    else if(dp.length === 3) return dp[0] + dp[2];
+    let sum = new Array(stairCnt).fill(0);
 
-    let origin = dp[stairCnt-1];
-    dp[stairCnt-1] = dp.reduce((cur, prev) => cur+prev) - dp[stairCnt-1];
+    //N번째 계단: N-3번째 계단에서 N-1번째 계단까지 2단점프를 한 후, N번째 계단으로 점프를 했을 때 || N-2번째 계단에서 2단점프를 했을 때
+    sum[0] = dp[0]; //첫번째는 그대로
+    sum[1] = Math.max(dp[1], dp[0]+dp[1]);
+    sum[2] = Math.max(dp[1]+dp[2], dp[0]+dp[2]);
 
-    for(let i=1;i<stairCnt-1;i++) {
-        if(dp[i] < dp[i+1]) {
-            dp[i+1] += dp[i-1];
-            i++;
-        } else {
-            dp[i] += dp[i-1];
-        }
+    for(let i=3;i<stairCnt;i++) {
+        sum[i] = Math.max(dp[i-1]+sum[i-3], sum[i-2]) + dp[i];
     }
 
-    if(dp[stairCnt-3] >= dp[stairCnt-2]) dp[stairCnt-1] = origin + dp[stairCnt-3];
-    else dp[stairCnt-1] = origin + dp[stairCnt-2];
-
-    return dp[stairCnt-1];
+    return sum[stairCnt-1];
 };
