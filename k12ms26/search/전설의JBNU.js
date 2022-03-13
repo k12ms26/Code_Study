@@ -1,4 +1,5 @@
 //BOJ 12757 전설의 JBNU
+//시간 초과
 const input = [];
 require("readline")
 .createInterface(process.stdin, process.stdout)
