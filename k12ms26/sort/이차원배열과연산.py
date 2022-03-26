@@ -72,7 +72,5 @@ def search(A):
     if time == 101: time = -1
     print(time)
 
-if r <= 3 and c <= 3:
-    if A[r-1][c-1] == k: print(0)
-    else: search(A)
+if r <= 3 and c <= 3 and A[r-1][c-1] == k: print(0)
 else: search(A)
